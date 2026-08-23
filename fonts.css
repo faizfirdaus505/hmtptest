@@ -1,0 +1,44 @@
+/* =========================================================
+   HMTP — Local Type System
+   4 licensed webfonts, each with a deliberate role:
+   - Bank Gothic Medium  -> display / headlines / nav / UI
+   - Century Schoolbook Bold -> serif accent (italic)
+   - Coolvetica  -> body copy / supporting text
+   - ISOCPEUR    -> technical / mono readouts (loading, labels)
+   ========================================================= */
+
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('bank_gothic_medium_bt-webfont.woff2') format('woff2'),
+       url('bank_gothic_medium_bt-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Schoolbook';
+  src: url('schlbkb-webfont.woff2') format('woff2'),
+       url('schlbkb-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('coolvetica_rg-webfont.woff2') format('woff2'),
+       url('coolvetica_rg-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ISOCPEUR';
+  src: url('isocpeur-webfont.woff2') format('woff2'),
+       url('isocpeur-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

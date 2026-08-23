@@ -1,0 +1,2597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <!-- ═══════════════════════════════════════════════════════
+       [A] HEAD — Meta, SEO, Aset
+       ═══════════════════════════════════════════════════════ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Judul tab browser — ubah sesuai kebutuhan -->
+  <title>Himpunan Mahasiswa Teknik Perancangan — Politeknik Manufaktur Bandung</title>
+
+  <!-- Deskripsi untuk mesin pencari (Google, Bing, dsb.) -->
+  <meta name="description" content="Ujung tombak inovasi manufaktur — Himpunan Mahasiswa Teknik Perancangan, Politeknik Manufaktur Bandung.">
+
+  <!-- Warna status bar di HP (Android Chrome, Safari iOS) -->
+  <meta name="theme-color" content="#181818">
+
+  <!-- Favicon — ganti img/logo-hmtp.png untuk favicon berbeda -->
+  <link rel="icon" href="img/logo-hmtp.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+  <!-- Skip link aksesibilitas (muncul saat Tab pertama ditekan) -->
+  <a href="#main-content" class="skip-link">Lompat ke konten utama</a>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       [B] LOADER — Animasi pembuka halaman
+       ═══════════════════════════════════════════════════════════════
+       CATATAN:
+       ▸ Teks marquee (DEA/DEB/DEC) → ubah konten <span class="loader__marquee-item">
+       ▸ Tiga logo → ganti src pada <img class="loader__logo-img">
+       ▸ Kecepatan animasi & urutan → script.js bagian "2. LOADER"
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="loader" id="loader" role="status" aria-live="polite" aria-label="Memuat situs HMTP">
+
+    <!-- Panel kiri & kanan yang membelah saat loader selesai -->
+    <div class="loader__panels" id="loaderPanels" aria-hidden="true">
+      <div class="loader__panel loader__panel--left"><span class="loader__seam"></span></div>
+      <div class="loader__panel loader__panel--right"><span class="loader__seam"></span></div>
+    </div>
+
+    <div class="loader__content" id="loaderContent">
+
+      <!-- Marquee atas (teks berjalan) -->
+      <div class="loader__marquee loader__marquee--top" aria-hidden="true">
+        <div class="loader__marquee-track">
+          <!-- Duplikat item min. 2x lipat agar animasi seamless -->
+          <span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span>
+        </div>
+      </div>
+
+      <!-- Tengah: logo + progress bar -->
+      <div class="loader__middle">
+
+        <div class="loader__logos">
+          <!-- Logo kiri — ganti src untuk mengubah logo -->
+          <div class="loader__logo loader__logo--side">
+            <img class="loader__logo-img" src="img/logo-hmtp.png" alt="Logo Himpunan Mahasiswa Teknik Perancangan">
+            <span class="loader__shine" style="--shine-delay:0s; -webkit-mask-image:url(img/logo-hmtp.png); mask-image:url(img/logo-hmtp.png);"></span>
+          </div>
+          <!-- Logo tengah (lebih besar) -->
+          <div class="loader__logo loader__logo--center">
+            <img class="loader__logo-img" src="img/logo-de.png" alt="Logo Program Studi Teknik Perancangan (Design Engineering)">
+            <span class="loader__shine" style="--shine-delay:0.15s; -webkit-mask-image:url(img/logo-de.png); mask-image:url(img/logo-de.png);"></span>
+          </div>
+          <!-- Logo kanan -->
+          <div class="loader__logo loader__logo--side">
+            <img class="loader__logo-img" src="img/logo-kabinet.png" alt="Logo Kabinet Aeternum Gloria">
+            <span class="loader__shine" style="--shine-delay:0.3s; -webkit-mask-image:url(img/logo-kabinet.png); mask-image:url(img/logo-kabinet.png);"></span>
+          </div>
+        </div>
+
+        <!-- Progress bar & angka persentase -->
+        <div class="loader__progress">
+          <div class="loader__percent">
+            <span id="loaderPercentValue">0</span><span class="loader__percent-sign">%</span>
+          </div>
+          <div class="loader__bar">
+            <div class="loader__bar-fill" id="loaderBarFill"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Marquee bawah (teks berjalan, arah terbalik) -->
+      <div class="loader__marquee loader__marquee--bottom" aria-hidden="true">
+        <div class="loader__marquee-track loader__marquee-track--reverse">
+          <span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span><span class="loader__marquee-item">DEA</span><span class="loader__marquee-item">DEB</span><span class="loader__marquee-item">DEC</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- / [B] LOADER -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       [C] NAVIGASI — Header, link desktop, menu HP
+       ═══════════════════════════════════════════════════════════════
+       CATATAN:
+       ▸ Untuk TAMBAH / HAPUS link nav:
+         Edit di DUA tempat — <nav class="site-nav__links"> (desktop)
+         dan <div class="mobile-menu"> (HP) — harus sinkron!
+       ▸ Logo navbar        → ganti src pada .site-nav__logo-img
+       ▸ Breakpoint tampil  → main.css BAB 8b (min-width: 860px)
+       ▸ Warna & efek blur  → main.css BAB 5 (NAVIGASI)
+       ═══════════════════════════════════════════════════════════════ -->
+  <header class="site-nav" id="siteNav">
+    <div class="site-nav__inner">
+
+      <!-- Logo (klik → reload halaman, diatur di script.js) -->
+      <button type="button" class="site-nav__logo" id="navLogoBtn" aria-label="Muat ulang beranda HMTP">
+        <img class="site-nav__logo-img" src="img/logo-nav.png" alt="Himpunan Mahasiswa Teknik Perancangan — Politeknik Manufaktur Bandung">
+      </button>
+
+      <!-- Link navigasi — hanya tampil di layar ≥ 860px -->
+      <nav class="site-nav__links" aria-label="Navigasi utama">
+        <a href="#hero" class="site-nav__link is-active" data-i18n="nav.home" data-nav-link>Beranda</a>
+
+        <!-- Dropdown Jurusan -->
+        <div class="nav-dropdown" id="dropdownJurusan">
+          <button class="site-nav__link nav-dropdown__trigger" aria-expanded="false" aria-haspopup="true" data-i18n="nav.department">
+            Jurusan <svg class="nav-dropdown__arrow" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" aria-hidden="true" role="menu">
+            <a href="#jurusan"  class="nav-dropdown__item" data-nav-link role="menuitem">Tentang Jurusan</a>
+            <a href="#materi"   class="nav-dropdown__item" data-nav-link role="menuitem">Materi</a>
+            <a href="#proyek"   class="nav-dropdown__item" data-nav-link role="menuitem">Proyek</a>
+            <a href="#berita"   class="nav-dropdown__item" data-nav-link role="menuitem">Berita</a>
+            <a href="#studio"   class="nav-dropdown__item" data-nav-link role="menuitem">Explore Studio</a>
+          </div>
+        </div>
+
+        <!-- Dropdown Himpunan -->
+        <div class="nav-dropdown" id="dropdownHimpunan">
+          <button class="site-nav__link nav-dropdown__trigger" aria-expanded="false" aria-haspopup="true" data-i18n="nav.association">
+            Himpunan <svg class="nav-dropdown__arrow" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown__menu" aria-hidden="true" role="menu">
+            <a href="#himpunan"     class="nav-dropdown__item" data-nav-link role="menuitem">Tentang Himpunan</a>
+            <a href="#departments"  class="nav-dropdown__item" data-nav-link role="menuitem">Departemen</a>
+            <a href="#organization" class="nav-dropdown__item" data-nav-link role="menuitem">Struktur Organisasi</a>
+            <a href="#galeri"       class="nav-dropdown__item" data-nav-link role="menuitem">Galeri</a>
+          </div>
+        </div>
+
+        <a href="#kontak" class="site-nav__link" data-i18n="nav.contact" data-nav-link>Kontak</a>
+      </nav>
+
+      <!-- Tombol kanan: toggle bahasa + hamburger -->
+      <div class="site-nav__actions">
+        <!-- Tombol hamburger — hanya tampil di layar < 860px -->
+        <button type="button" class="nav-burger" id="navBurger"
+                aria-label="Buka menu navigasi"
+                aria-expanded="false"
+                aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Menu mobile — tampil saat tombol hamburger ditekan -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Navigasi mobile" aria-hidden="true">
+      <a href="#hero" class="mobile-menu__link is-active" data-i18n="nav.home" data-nav-link>Beranda</a>
+
+      <!-- Accordion Jurusan -->
+      <div class="mobile-accordion" id="mAccordionJurusan">
+        <button class="mobile-menu__link mobile-accordion__trigger" aria-expanded="false" data-i18n="nav.department">
+          Jurusan
+          <svg class="mobile-accordion__arrow" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-accordion__panel" aria-hidden="true">
+          <a href="#jurusan" class="mobile-accordion__item" data-nav-link>Tentang Jurusan</a>
+          <a href="#materi"  class="mobile-accordion__item" data-nav-link>Materi</a>
+          <a href="#proyek"  class="mobile-accordion__item" data-nav-link>Proyek</a>
+          <a href="#berita"  class="mobile-accordion__item" data-nav-link>Berita</a>
+          <a href="#studio"  class="mobile-accordion__item" data-nav-link>Explore Studio</a>
+        </div>
+      </div>
+
+      <!-- Accordion Himpunan -->
+      <div class="mobile-accordion" id="mAccordionHimpunan">
+        <button class="mobile-menu__link mobile-accordion__trigger" aria-expanded="false" data-i18n="nav.association">
+          Himpunan
+          <svg class="mobile-accordion__arrow" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-accordion__panel" aria-hidden="true">
+          <a href="#himpunan"     class="mobile-accordion__item" data-nav-link>Tentang Himpunan</a>
+          <a href="#departments"  class="mobile-accordion__item" data-nav-link>Departemen</a>
+          <a href="#organization" class="mobile-accordion__item" data-nav-link>Struktur Organisasi</a>
+          <a href="#galeri"       class="mobile-accordion__item" data-nav-link>Galeri</a>
+        </div>
+      </div>
+
+      <a href="#kontak" class="mobile-menu__link" data-i18n="nav.contact" data-nav-link>Kontak</a>
+    </nav>
+  </header>
+  <!-- / [C] NAVIGASI -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       [D] MAIN — Konten utama halaman
+       ═══════════════════════════════════════════════════════════════ -->
+  <main id="main-content">
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D1] HERO — Section pembuka fullscreen
+         ─────────────────────────────────────────────────────────
+         CATATAN:
+         ▸ Gambar latar           → ganti img/hero.png
+         ▸ Posisi gambar (kiri/tengah/kanan) → main.css
+                                     .hero__image { object-position }
+         ▸ Teks (Indonesia)       → langsung edit konten elemen di bawah
+         ▸ Badge "HMTP" melayang  → .hero__badge-mark
+         ───────────────────────────────────────────────────────── -->
+    <section class="hero" id="hero">
+
+      <!-- Gambar latar + gradient gelap -->
+      <div class="hero__media" id="heroMedia">
+        <img class="hero__image" id="heroImage" src="img/hero.png" alt="" role="presentation">
+        <div class="hero__gradient"></div>
+      </div>
+
+      <!-- Badge "HMTP" setengah melayang di tepi kanan -->
+      <div class="hero__badge" aria-hidden="true">
+        <span class="hero__badge-mark">HMTP</span>
+      </div>
+
+      <!-- Teks konten hero -->
+      <div class="hero__content">
+        <p class="hero__eyebrow">
+          <span class="hero__eyebrow-main"  data-i18n="hero.eyebrowMain">Teknik</span>
+          <span class="hero__eyebrow-accent" data-i18n="hero.eyebrowAccent">Perancangan</span>
+        </p>
+        <h1 class="hero__headline">
+          <span><em data-i18n="hero.headline1">UJUNG TOMBAK</em></span>
+          <span><em data-i18n="hero.headline2">INOVASI MANUFAKTUR</em></span>
+        </h1>
+        <p class="hero__subtitle" data-i18n="hero.subtitle">
+          Membentuk generasi engineer yang merancang, menciptakan, dan mengembangkan solusi manufaktur masa depan.
+        </p>
+      </div>
+
+      <!-- Tombol scroll ke bawah -->
+      <button type="button" class="hero__scroll" id="heroScroll" aria-label="Gulir untuk mulai eksplorasi">
+        <span data-i18n="hero.scroll">Scroll untuk eksplorasi</span>
+        <span class="hero__scroll-icon" aria-hidden="true"></span>
+      </button>
+
+    </section>
+    <!-- / [D1] HERO -->
+
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D2] JURUSAN / ABOUT — Grid 2-kolom + Image Sequence Scroll
+         ─────────────────────────────────────────────────────────
+         KIRI  : Info jurusan + 3 kartu prodi (blur glass effect)
+         KANAN : Canvas image sequence — progress dikontrol scroll
+         TINGGI: 200vh (2 layar scroll)
+
+         CARA PASANG FRAME ANIMASI:
+         ▸ Buat folder output/assets/about-sequence/
+         ▸ Export frame sebagai WebP:
+             esx_0001.webp, esx_0002.webp, … esx_0360.webp
+         ▸ Tidak perlu mengubah HTML — path sudah diatur di script.js
+           (konstanta FRAME_DIR, FRAME_PREFIX, FRAME_EXT, TOTAL_FRAMES)
+         ─────────────────────────────────────────────────────────  -->
+    <section class="about" id="jurusan">
+      <div class="about__grid">
+
+        <!-- ════════════════════════════════════════════
+             KIRI — Info jurusan + kartu prodi
+             ════════════════════════════════════════════ -->
+        <div class="about__col about__col--left">
+          <div class="about__left-sticky">
+            <!-- about__left-inner: di-scroll oleh JS seiring progress animasi -->
+            <div class="about__left-inner">
+
+            <!-- Kop: chip label + angka dekoratif -->
+            <div class="about__kop">
+              <span class="about__chip" data-i18n="jurusan.chip">Tentang jurusan</span>
+              <span class="about__ghost" aria-hidden="true">DE</span>
+            </div>
+
+            <!-- Judul besar -->
+            <div class="about__title-block">
+              <h2 class="about__title">
+                <span class="about__title-plain" data-i18n="jurusan.h1">Teknik</span>
+                <em class="about__title-em" data-i18n="jurusan.h2">Perancangan</em>
+              </h2>
+              <p class="about__meta" data-i18n="jurusan.meta">
+                Politeknik Manufaktur Bandung &nbsp;&middot;&nbsp; D3
+              </p>
+            </div>
+
+            <!-- Paragraf blur-per-kata (dikontrol scroll section) -->
+            <div class="about__stmt-wrap">
+              <p class="about__stmt js-about-blur">
+                Teknik Perancangan adalah disiplin ilmu yang berfokus pada perancangan sistem, komponen, dan proses manufaktur melalui penerapan ilmu keteknikan, matematika, serta teknologi modern. Mahasiswa dibekali kemampuan dalam gambar teknik, CAD, dan CAE untuk merancang berbagai produk seperti press tool, injection mold, jigs & fixtures, mesin perkakas, mesin otomatis, hingga desain produk. Pembelajaran diperkuat dengan praktik industri dan tugas akhir sehingga lulusan siap menghadapi tantangan dunia manufaktur.
+              </p>
+            </div>
+
+            <!-- Pemisah emas -->
+            <div class="about__rule" aria-hidden="true"></div>
+
+            <!-- Label konsentrasi -->
+            <p class="about__konsen-label" data-i18n="jurusan.konsLabel">Konsentrasi</p>
+
+            <!-- Tiga kartu prodi — blur glass reveal saat scroll -->
+            <div class="about__cards-grid">
+
+              <article class="prodi-glass" data-about-card="0">
+                <div class="prodi-glass__accent" aria-hidden="true"></div>
+                <span class="prodi-glass__num" aria-hidden="true">01</span>
+                <span class="prodi-glass__code">DEA</span>
+                <h3 class="prodi-glass__name" data-i18n="jurusan.deaTitle">
+                  Teknologi Perancangan Perkakas Presisi
+                </h3>
+                <p class="prodi-glass__text" data-i18n="jurusan.deaText">
+                  Berfokus pada analisis, perencanaan, dan perancangan konstruksi perkakas presisi dengan penerapan metode dan prosedur manufaktur modern.
+                </p>
+              </article>
+
+              <article class="prodi-glass" data-about-card="1">
+                <div class="prodi-glass__accent" aria-hidden="true"></div>
+                <span class="prodi-glass__num" aria-hidden="true">02</span>
+                <span class="prodi-glass__code">DEB</span>
+                <h3 class="prodi-glass__name" data-i18n="jurusan.debTitle">
+                  Rekayasa Perancangan Mekanik
+                </h3>
+                <p class="prodi-glass__text" data-i18n="jurusan.debText">
+                  Membekali mahasiswa dengan kompetensi vokasi dalam rekayasa dan perancangan mesin untuk menghasilkan solusi mekanik yang inovatif dan aplikatif.
+                </p>
+              </article>
+
+              <article class="prodi-glass" data-about-card="2">
+                <div class="prodi-glass__accent" aria-hidden="true"></div>
+                <span class="prodi-glass__num" aria-hidden="true">03</span>
+                <span class="prodi-glass__code">DEC</span>
+                <h3 class="prodi-glass__name" data-i18n="jurusan.decTitle">
+                  Teknologi Rekayasa Perancangan Manufaktur
+                </h3>
+                <p class="prodi-glass__text" data-i18n="jurusan.decText">
+                  Mengembangkan keahlian dalam rekayasa dan perancangan sistem manufaktur berbasis teknologi modern untuk menjawab kebutuhan industri.
+                </p>
+              </article>
+
+            </div><!-- / .about__cards-grid -->
+
+            <!-- Statistik -->
+            <div class="about__stats">
+              <div class="about__stat">
+                <span class="about__stat-val">3</span>
+                <span class="about__stat-lbl" data-i18n="jurusan.s1">Konsentrasi</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-val">CAD / CAE</span>
+                <span class="about__stat-lbl" data-i18n="jurusan.s2">Perangkat Rekayasa</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-val">Industry</span>
+                <span class="about__stat-lbl" data-i18n="jurusan.s3">Pembelajaran Berbasis Industri</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-val">Polman</span>
+                <span class="about__stat-lbl" data-i18n="jurusan.s4">Bandung</span>
+              </div>
+            </div>
+
+            </div><!-- / .about__left-inner -->
+          </div><!-- / .about__left-sticky -->
+        </div><!-- / .about__col--left -->
+
+        <!-- ════════════════════════════════════════════
+             KANAN — Video scroll-driven (sticky)
+             ════════════════════════════════════════════ -->
+        <div class="about__col about__col--right">
+          <div class="about__video-sticky">
+
+            <div class="about__video-frame">
+
+              <!-- Canvas untuk image sequence scroll-driven animation          -->
+              <!-- Frame: assets/about-sequence/esx_0001.webp … esx_0360.webp -->
+              <canvas
+                id="aboutCanvas"
+                class="about__video"
+                aria-label="Animasi explode Teknik Perancangan"
+              ></canvas>
+
+              <div class="about__cad-grid" aria-hidden="true"></div>
+              <!-- Loading state — tampil selama frame sedang di-preload -->
+              <div class="about__video-ph" id="aboutCanvasPh" aria-hidden="true">
+                <span class="about__video-ph-text">HMTP</span>
+                <span class="about__video-ph-sub" id="aboutCanvasPhSub">Memuat animasi…</span>
+              </div>
+
+              <!-- Vignette gradient melebur ke sisi kiri + atas/bawah -->
+              <div class="about__video-vignette" aria-hidden="true"></div>
+
+              <!-- Overlay UI: label & progress bar -->
+              <div class="about__video-ui" aria-hidden="true">
+                <span class="about__video-lbl" id="aboutVideoLbl">&#9654; Scroll untuk memutar</span>
+                <div class="about__video-bar">
+                  <div class="about__video-fill" id="aboutVideoFill"></div>
+                </div>
+              </div>
+
+            </div><!-- / .about__video-frame -->
+
+          </div><!-- / .about__video-sticky -->
+        </div><!-- / .about__col--right -->
+
+      </div><!-- / .about__grid -->
+    </section>
+    <!-- / [D2] JURUSAN -->
+
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D2.5] STATISTIK — Marquee ticker web-awards style
+         ─────────────────────────────────────────────────────────
+         Header fade-in dari atas, marquee geser kanan→kiri tanpa henti.
+         Hover pada kartu = marquee berhenti di posisi saat itu.
+         Track diduplikasi (Set 1 + Set 2) untuk loop mulus.
+         ─────────────────────────────────────────────────────────  -->
+    <section class="statistik" id="statistik">
+
+      <!-- ── Header (centered inner) ────────────────────────── -->
+      <div class="statistik__inner">
+        <header class="statistik__header" id="statHeader">
+          <div class="statistik__title-group">
+            <span class="statistik__eyebrow">Data &amp; Angka</span>
+            <h2 class="statistik__title">STATISTIK</h2>
+          </div>
+          <div class="statistik__header-right">
+            <p class="statistik__desc">
+              Angka-angka yang mendefinisikan Teknik Perancangan<br>
+              Politeknik Manufaktur Bandung.
+            </p>
+            <p class="statistik__hint" aria-hidden="true">
+              <span class="statistik__hint-dot"></span>
+              <span>Hover kartu untuk berhenti</span>
+            </p>
+          </div>
+        </header>
+      </div>
+
+      <!-- ── Marquee (full-width, di luar inner) ────────────── -->
+      <div class="stat-marquee" id="statMarquee">
+        <div class="stat-marquee__track" id="statTrack">
+
+          <!-- ═══ SET 1 ════════════════════════════════════════ -->
+          <div class="stat-card" data-stat-idx="0">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">01</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">12</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.lab">Studio &amp; Lab</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <div class="stat-card" data-stat-idx="1">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">02</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">24</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.dosen">Dosen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <div class="stat-card" data-stat-idx="2">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">03</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">8</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.plp">PLP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <div class="stat-card" data-stat-idx="3">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">04</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">3</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.studi">Program Studi</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <div class="stat-card" data-stat-idx="4">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">05</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">400+</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.mahasiswa">Mahasiswa</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <!-- ═══ SET 2 — duplikat untuk loop mulus ════════════ -->
+          <div class="stat-card" data-stat-idx="0" aria-hidden="true">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">01</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">12</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.lab">Studio &amp; Lab</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <div class="stat-card" data-stat-idx="1" aria-hidden="true">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">02</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">24</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.dosen">Dosen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <div class="stat-card" data-stat-idx="2" aria-hidden="true">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">03</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">8</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.plp">PLP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <div class="stat-card" data-stat-idx="3" aria-hidden="true">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">04</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">3</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.studi">Program Studi</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+          <div class="stat-card" data-stat-idx="4" aria-hidden="true">
+            <div class="stat-card__shine"></div>
+            <div class="stat-card__shadow"></div>
+            <div class="stat-card__body">
+              <span class="stat-card__idx">05</span>
+              <div class="stat-card__center">
+                <span class="stat-card__num">400+</span>
+              </div>
+              <div class="stat-card__footer">
+                <div class="stat-card__line"></div>
+                <span class="stat-card__label" data-i18n="stat.mahasiswa">Mahasiswa</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-sep" aria-hidden="true"><span>✦</span></div>
+
+        </div><!-- / .stat-marquee__track -->
+      </div><!-- / .stat-marquee -->
+
+      <!-- ── Rule (centered inner) ──────────────────────────── -->
+      <div class="statistik__inner">
+        <div class="statistik__rule" id="statRule"></div>
+      </div>
+
+    </section>
+    <!-- / [D2.5] STATISTIK -->
+
+
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D3] MATERI — 3D Coverflow Prodi + Semester Repository
+         ───────────────────────────────────────────────────────── -->
+    <section class="materi" id="materi" scroll-margin-top="var(--nav-height)">
+      <div class="materi__inner">
+
+        <!-- ── Header ──────────────────────────────────────────── -->
+        <header class="materi__header">
+          <p class="materi__eyebrow">Repository Akademik</p>
+          <h2 class="materi__title">MATERI</h2>
+          <p class="materi__tagline">Pilih Program Studi &nbsp;›&nbsp; Pilih Semester &nbsp;›&nbsp; Akses Materi</p>
+        </header>
+
+        <!-- Drag hint -->
+        <p class="materi__hint" aria-hidden="true">Geser atau klik panah untuk berpindah</p>
+
+        <!-- ── Coverflow Stage ──────────────────────────────────── -->
+        <div class="materi__stage" id="cfStage" aria-label="Pilih Program Studi" role="region">
+
+          <!-- Perspective scene -->
+          <div class="materi__scene" id="cfScene">
+            <div class="cflow-track" id="cfTrack">
+
+              <!-- Kartu: TPM -->
+              <div class="cflow-card" data-prodi="tppp" data-ci="0" role="button" tabindex="0" aria-label="Pilih Program Studi TPM">
+                <div class="cflow-card__bg"></div>
+                <div class="cflow-card__grid"></div>
+                <div class="cflow-card__ghost" aria-hidden="true">TPPP</div>
+                <div class="cflow-card__corner cflow-card__corner--tl"></div>
+                <div class="cflow-card__corner cflow-card__corner--tr"></div>
+                <div class="cflow-card__corner cflow-card__corner--bl"></div>
+                <div class="cflow-card__corner cflow-card__corner--br"></div>
+                <div class="cflow-card__accent"></div>
+                <div class="cflow-card__inner">
+                  <div class="cflow-card__head">
+                    <span class="cflow-card__idx">01</span>
+                    <span class="cflow-card__badge">DEA</span>
+                  </div>
+                  <div class="cflow-card__body">
+                    <div class="cflow-card__code">TPPP</div>
+                    <h3 class="cflow-card__name">Teknologi Perancangan Perkakas Presisi</h3>
+                  </div>
+                  <div class="cflow-card__foot">
+                    <span class="cflow-card__meta">6 Semester</span>
+                    <span class="cflow-card__foot-end">
+                      <span class="cflow-card__arrow" aria-hidden="true">→</span>
+                      <span class="cflow-card__cta" aria-hidden="true">PILIH
+                        <svg class="cflow-card__cta-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1.5,3.5 5,7 8.5,3.5"/></svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kartu: RPM -->
+              <div class="cflow-card" data-prodi="rpm" data-ci="1" role="button" tabindex="0" aria-label="Pilih Program Studi RPM">
+                <div class="cflow-card__bg"></div>
+                <div class="cflow-card__grid"></div>
+                <div class="cflow-card__ghost" aria-hidden="true">RPM</div>
+                <div class="cflow-card__corner cflow-card__corner--tl"></div>
+                <div class="cflow-card__corner cflow-card__corner--tr"></div>
+                <div class="cflow-card__corner cflow-card__corner--bl"></div>
+                <div class="cflow-card__corner cflow-card__corner--br"></div>
+                <div class="cflow-card__accent"></div>
+                <div class="cflow-card__inner">
+                  <div class="cflow-card__head">
+                    <span class="cflow-card__idx">02</span>
+                    <span class="cflow-card__badge">DEB</span>
+                  </div>
+                  <div class="cflow-card__body">
+                    <div class="cflow-card__code">RPM</div>
+                    <h3 class="cflow-card__name">Rekayasa Perancangan Mekanik</h3>
+                  </div>
+                  <div class="cflow-card__foot">
+                    <span class="cflow-card__meta">8 Semester</span>
+                    <span class="cflow-card__foot-end">
+                      <span class="cflow-card__arrow" aria-hidden="true">→</span>
+                      <span class="cflow-card__cta" aria-hidden="true">PILIH
+                        <svg class="cflow-card__cta-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1.5,3.5 5,7 8.5,3.5"/></svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kartu: TPF -->
+              <div class="cflow-card" data-prodi="trpm" data-ci="2" role="button" tabindex="0" aria-label="Pilih Program Studi TPF">
+                <div class="cflow-card__bg"></div>
+                <div class="cflow-card__grid"></div>
+                <div class="cflow-card__ghost" aria-hidden="true">TRPM</div>
+                <div class="cflow-card__corner cflow-card__corner--tl"></div>
+                <div class="cflow-card__corner cflow-card__corner--tr"></div>
+                <div class="cflow-card__corner cflow-card__corner--bl"></div>
+                <div class="cflow-card__corner cflow-card__corner--br"></div>
+                <div class="cflow-card__accent"></div>
+                <div class="cflow-card__inner">
+                  <div class="cflow-card__head">
+                    <span class="cflow-card__idx">03</span>
+                    <span class="cflow-card__badge">DEC</span>
+                  </div>
+                  <div class="cflow-card__body">
+                    <div class="cflow-card__code">TRPM</div>
+                    <h3 class="cflow-card__name">Teknologi Rekayasa Perancangan Manufaktur</h3>
+                  </div>
+                  <div class="cflow-card__foot">
+                    <span class="cflow-card__meta">8 Semester</span>
+                    <span class="cflow-card__foot-end">
+                      <span class="cflow-card__arrow" aria-hidden="true">→</span>
+                      <span class="cflow-card__cta" aria-hidden="true">PILIH
+                        <svg class="cflow-card__cta-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1.5,3.5 5,7 8.5,3.5"/></svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- / #cfTrack -->
+          </div><!-- / .materi__scene -->
+
+          <!-- Navigation arrows -->
+          <button class="cflow-nav cflow-nav--prev" id="cfPrev" aria-label="Program Studi sebelumnya">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="11,3 5,9 11,15"/></svg>
+          </button>
+          <button class="cflow-nav cflow-nav--next" id="cfNext" aria-label="Program Studi berikutnya">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="7,3 13,9 7,15"/></svg>
+          </button>
+
+        </div><!-- / .materi__stage -->
+
+        <!-- Dot indicators -->
+        <div class="cflow-dots" id="cfDots" aria-label="Indikator Program Studi">
+          <button class="cflow-dot" data-di="0" aria-label="TPPP"></button>
+          <button class="cflow-dot" data-di="1" aria-label="RPM"></button>
+          <button class="cflow-dot" data-di="2" aria-label="TRPM"></button>
+        </div>
+
+        <!-- CARD DROPDOWN -->
+        <div class="card-dropdown" id="cardDropdown" aria-hidden="true">
+          <div class="card-dropdown__header">
+            <p class="card-dropdown__eyebrow">Pilih Semester</p>
+            <p class="card-dropdown__prodi" id="cdProdiName">—</p>
+          </div>
+          <div class="card-dropdown__panel" id="cardDropdownPanel" role="listbox" aria-label="Pilih Semester"></div>
+        </div>
+
+        <!-- INFO PANEL SEMESTER -->
+        <div class="materi__info-wrap" id="infoWrap">
+          <div class="info-panel">
+            <div class="info-panel__left">
+              <p class="info-panel__tag" id="infoTag">Program Studi</p>
+              <div>
+                <h3 class="info-panel__sem" id="infoSem">SEMESTER —</h3>
+                <p class="info-panel__title" id="infoTitle">—</p>
+              </div>
+              <div class="info-panel__stats">
+                <div class="info-panel__stat">
+                  <span class="info-panel__stat-val" id="infoCount">—</span>
+                  <span class="info-panel__stat-lbl">Mata Kuliah</span>
+                </div>
+              </div>
+              <div class="info-panel__rule"></div>
+              <p class="info-panel__desc" id="infoDesc">—</p>
+            </div>
+            <div class="info-panel__right">
+              <a class="drive-btn" id="driveBtn" href="#" target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M6.5 2L1 11.5h3.25L10 2H6.5zM10 2l5.5 9.5H12L6.5 2H10zM4.25 11.5L6.75 14h2.5L6.75 11.5H4.25zM6.75 14h2.5l2.5-2.5H9.25L6.75 14zM9.25 11.5l2.5 2.5H15l-2.5-2.5H9.25z"/>
+                </svg>
+                <span class="drive-btn__label">Buka Google Drive</span>
+                <span class="drive-btn__arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- / .materi__inner -->
+    </section>
+    <!-- / [D3] MATERI -->
+
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D3.5] PROYEK — Galeri Karya Mahasiswa
+         ─────────────────────────────────────────────────────────
+         Blur-in / blur-out entrance (awwwards style) via
+         IntersectionObserver di script.js bagian "9. PROYEK"
+
+         CARA TAMBAH PROYEK:
+         ▸ Edit array DATA di script.js bagian "9. PROYEK"
+         ▸ media.type: 'image' | '3d' | 'placeholder'
+         ▸ media.src : path file, atau null untuk placeholder
+         ───────────────────────────────────────────────────────── -->
+    <section class="proyek" id="proyek">
+      <div class="proyek__inner">
+
+        <header class="proyek__header" id="proyekHeader">
+          <span class="proyek__eyebrow">Karya Mahasiswa</span>
+          <h2 class="proyek__title">PROYEK <span class="section-count" id="proyekCount"></span></h2>
+          <p class="proyek__tagline">Hasil rancangan terbaik mahasiswa Teknik Perancangan</p>
+        </header>
+
+        <!-- Grid diisi oleh script.js bagian "9. PROYEK" -->
+        <div class="proyek__grid" id="proyekGrid" role="list"></div>
+
+        <!-- Proyek pagination — dikontrol devmode.js -->
+        <div class="proyek__pagination" id="proyekPagination" aria-hidden="true">
+          <button class="proyek__pag-btn" id="proyekPagPrev" type="button" aria-label="Halaman sebelumnya" disabled>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9,2 5,7 9,12"/></svg>
+          </button>
+          <span class="proyek__pag-info" id="proyekPagInfo">1 / 1</span>
+          <button class="proyek__pag-btn" id="proyekPagNext" type="button" aria-label="Halaman berikutnya">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="5,2 9,7 5,12"/></svg>
+          </button>
+        </div>
+
+        <div class="proyek__actions">
+          <button class="proyek__add-btn dev-btn" id="proyekAddBtn" type="button">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <line x1="6.5" y1="1.5" x2="6.5" y2="11.5"/>
+              <line x1="1.5" y1="6.5" x2="11.5" y2="6.5"/>
+            </svg>
+            <span>Tambah Proyek</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+    <!-- / [D3.5] PROYEK -->
+
+
+    <!-- MODAL PROYEK -->
+    <div class="proyek-modal" id="proyekModal"
+         aria-modal="true" role="dialog"
+         aria-label="Detail Proyek" aria-hidden="true">
+
+      <div class="proyek-modal__backdrop" id="proyekModalBackdrop"></div>
+
+      <div class="proyek-modal__card">
+
+        <button class="proyek-modal__close" id="proyekModalClose" type="button" aria-label="Tutup">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="2" y1="2" x2="11" y2="11"/>
+            <line x1="11" y1="2" x2="2" y2="11"/>
+          </svg>
+        </button>
+
+        <!-- KIRI: Slider -->
+        <div class="proyek-modal__left" id="proyekModalLeft">
+          <span class="proyek-modal__counter" id="proyekModalCounter">1 / 1</span>
+
+          <div class="proyek-modal__slides-wrap">
+            <div class="proyek-modal__slides" id="proyekModalSlides"></div>
+          </div>
+
+          <button class="proyek-modal__nav proyek-modal__nav--prev"
+                  id="proyekModalPrev" type="button" aria-label="Sebelumnya">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9,2.5 4.5,7.5 9,12.5"/>
+            </svg>
+          </button>
+
+          <button class="proyek-modal__nav proyek-modal__nav--next"
+                  id="proyekModalNext" type="button" aria-label="Berikutnya">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6,2.5 10.5,7.5 6,12.5"/>
+            </svg>
+          </button>
+
+          <div class="proyek-modal__dots" id="proyekModalDots"></div>
+
+          <button class="proyek-modal__upload3d" id="proyekUpload3dBtn" type="button"
+                  title="Upload file 3D (.glb / .gltf)">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
+                 stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+              <path d="M5.5 7V2M3 4.5L5.5 2 8 4.5"/>
+              <path d="M1.5 8.5v1a1 1 0 001 1h6a1 1 0 001-1v-1"/>
+            </svg>
+            <span>Upload 3D</span>
+          </button>
+          <input type="file" id="proyekUpload3dInput" accept=".glb,.gltf"
+                 class="proyek-modal__file-input" aria-hidden="true" tabindex="-1">
+        </div>
+
+        <!-- KANAN: Info -->
+        <div class="proyek-modal__right">
+          <div class="proyek-modal__kop">
+            <span class="proyek-modal__num"   id="proyekModalNum">—</span>
+            <span class="proyek-modal__prodi" id="proyekModalProdi">—</span>
+          </div>
+          <h3 class="proyek-modal__name" id="proyekModalName">—</h3>
+          <div class="proyek-modal__rule"></div>
+          <div>
+            <p class="proyek-modal__lbl">Pembuat</p>
+            <p class="proyek-modal__author" id="proyekModalAuthor">—</p>
+          </div>
+          <div>
+            <p class="proyek-modal__lbl">Deskripsi</p>
+            <p class="proyek-modal__desc" id="proyekModalDesc">—</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- / MODAL PROYEK -->
+
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D3.6] BERITA — News Carousel
+         ─────────────────────────────────────────────────────────
+         Data disimpan di localStorage (key: hmtp_berita).
+         Tambah / edit / hapus lewat tombol "Tambah Berita".
+         ─────────────────────────────────────────────────────────  -->
+    <section class="berita" id="berita">
+      <div class="berita__inner">
+
+        <header class="berita__header" id="beritaHeader">
+          <span class="berita__eyebrow">Info Terkini</span>
+          <h2 class="berita__title">BERITA <span class="section-count" id="beritaCount"></span></h2>
+        </header>
+
+        <!-- Carousel -->
+        <div class="berita__stage">
+
+          <button class="berita__nav berita__nav--prev" id="beritaPrev"
+                  type="button" aria-label="Berita sebelumnya" disabled>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9,2 5,7 9,12"/>
+            </svg>
+          </button>
+
+          <div class="berita__track-outer" id="beritaTrackOuter">
+            <div class="berita__track" id="beritaTrack" role="list"></div>
+          </div>
+
+          <button class="berita__nav berita__nav--next" id="beritaNext"
+                  type="button" aria-label="Berita berikutnya">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <polyline points="5,2 9,7 5,12"/>
+            </svg>
+          </button>
+
+        </div><!-- / .berita__stage -->
+
+        <div class="berita__dots" id="beritaDots" role="tablist"
+             aria-label="Navigasi berita"></div>
+
+        <div class="berita__actions">
+          <button class="berita__add-btn dev-btn" id="beritaAddBtn" type="button">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                 stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                 aria-hidden="true">
+              <line x1="6" y1="1" x2="6" y2="11"/>
+              <line x1="1" y1="6" x2="11" y2="6"/>
+            </svg>
+            Tambah Berita
+          </button>
+        </div>
+
+      </div>
+    </section>
+    <!-- / [D3.6] BERITA -->
+
+
+    <!-- MODAL TAMBAH / EDIT BERITA -->
+    <div class="berita-modal" id="beritaModal"
+         aria-modal="true" role="dialog"
+         aria-label="Tambah atau edit berita" aria-hidden="true">
+
+      <div class="berita-modal__backdrop" id="beritaModalBackdrop"></div>
+
+      <div class="berita-modal__card">
+
+        <button class="berita-modal__close" id="beritaModalClose"
+                type="button" aria-label="Tutup">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="2" y1="2" x2="11" y2="11"/>
+            <line x1="11" y1="2" x2="2" y2="11"/>
+          </svg>
+        </button>
+
+        <h3 class="berita-modal__title" id="beritaModalHeading">Tambah Berita</h3>
+
+        <form class="berita-modal__form" id="beritaForm" novalidate>
+
+          <label>
+            Judul Berita
+            <input type="text" id="beritaInputTitle"
+                   placeholder="Tulis judul berita…" required maxlength="150">
+          </label>
+
+          <label>
+            Link Berita
+            <input type="url" id="beritaInputLink"
+                   placeholder="https://…" required>
+          </label>
+
+          <!-- FIX: upload file langsung, bukan URL -->
+          <label class="berita-modal__img-label">
+            Gambar <span style="opacity:.5;font-size:.55rem">(opsional — klik atau drop)</span>
+          </label>
+          <div class="dev-modal__upload-area" id="beritaUploadArea">
+            <input type="file" id="beritaInputImageFile" accept="image/*" style="display:none">
+            <div class="dev-modal__upload-inner" id="beritaUploadInner">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.3" opacity=".5">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <span>Klik atau drop foto di sini</span>
+            </div>
+            <img id="beritaPreviewImg" class="dev-modal__preview"
+                 style="display:none;cursor:pointer;" alt="Preview"
+                 title="Klik untuk hapus gambar">
+          </div>
+
+          <div class="berita-modal__footer">
+            <button class="berita-modal__cancel" id="beritaCancelBtn" type="button">Batal</button>
+            <button class="berita-modal__save"   type="submit">Simpan</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    <!-- / MODAL BERITA -->
+
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D3.5] EXPLORE STUDIO — Virtual tour trigger section
+         ─────────────────────────────────────────────────────────
+         Klik tombol "Mulai Jelajahi" → openExplore() terpanggil
+         Overlay fullscreen muncul di atas halaman.
+         ─────────────────────────────────────────────────────────  -->
+    <section class="studio-trigger" id="studio">
+      <div class="studio-trigger__inner">
+
+        <div class="studio-trigger__kop">
+          <span class="studio-trigger__eyebrow">Virtual Tour</span>
+          <span class="studio-trigger__ghost" aria-hidden="true">ES</span>
+        </div>
+
+        <div class="studio-trigger__title-block">
+          <h2 class="studio-trigger__title" data-i18n="studio.title">
+            <span class="studio-trigger__title-plain">Explore</span>
+            <em class="studio-trigger__title-em">Studio</em>
+          </h2>
+          <p class="studio-trigger__sub" data-i18n="studio.sub">
+            Jelajahi seluruh ruangan studio kami secara virtual langsung dari browser.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="studio-trigger__btn"
+          id="studioOpenBtn"
+          aria-label="Buka virtual tour studio"
+        >
+          <span data-i18n="studio.btn">Mulai Jelajahi</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+
+        <div class="studio-trigger__hint" aria-hidden="true">
+          <span class="studio-trigger__hint-dot"></span>
+          <span class="studio-trigger__hint-txt">12 studio &nbsp;·&nbsp; 2 jalur eksplorasi</span>
+        </div>
+
+      </div>
+    </section>
+    <!-- / [D3.5] EXPLORE STUDIO -->
+
+
+<section class="hmtp-transition" id="himpunan">
+
+    <div class="hmtp-transition__sticky">
+
+        <div class="hmtp-transition__black"></div>
+
+        <div class="hmtp-transition__logos">
+            <img 
+                src="img/logo-hmtp.png" 
+                class="hmtp-transition__logo--hmtp"
+            >
+
+            <img 
+                src="img/logo-kabinet.png" 
+                class="hmtp-transition__logo--kabinet"
+            >
+        </div>
+
+        <div class="hmtp-transition__title">
+            <span class="hmtp-transition__title-main">HMTP</span>
+
+            <span class="hmtp-transition__title-sub">
+                Himpunan Mahasiswa Teknik Perancangan
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="about-himpunan">
+
+    <div class="about-himpunan__inner">
+
+        <div class="about-himpunan__label" data-hmpn-reveal>
+            tentang kami
+        </div>
+
+        <div class="about-himpunan__accent-line" data-hmpn-reveal data-hmpn-delay="1" aria-hidden="true"></div>
+
+        <p class="about-himpunan__text" id="aboutHimpunanText">
+            	HMTP adalah rumah dan wadah bagi mahasiswa Teknik Perancangan Manufaktur untuk bertumbuh, berkolaborasi, dan berkarya. Bersama dalam satu keluarga, kami berkembang, menciptakan inovasi, dan membawa Teknik Perancangan Manufaktur sebagai ujung tombak inovasi manufaktur.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     DEPARTMENTS SECTION
+     ========================================================= -->
+
+<section class="departments" id="departments">
+  <div class="departments__sticky">
+
+    <div class="departments__header">
+      <p class="departments__eyebrow">Departemen &middot; HMTP</p>
+      <h2 class="departments__title">Kabinet</h2>
+    </div>
+
+    <div class="departments__counter">
+      <span class="departments__counter-line"></span>
+      <span id="departmentCurrent">01</span>
+      <span>&nbsp;/&nbsp;04</span>
+    </div>
+
+    <div class="departments__carousel" id="departmentCarousel">
+
+  <!-- =====================================================
+       PAIR 1
+       ===================================================== -->
+
+  <div class="department-pair">
+
+    <!-- CARD 01 — LEGISLATIF -->
+    <article class="department-card department-card--left">
+
+      <div class="department-card__glow"></div>
+
+      <div class="department-card__top">
+        <span class="department-card__number">01</span>
+        <span class="department-card__label">HMTP</span>
+      </div>
+
+      <div class="department-card__content">
+
+        <p class="department-card__category">
+          ORGANISASI
+        </p>
+
+        <h3 class="department-card__title">
+          Legislatif
+        </h3>
+
+        <p class="department-card__description">
+          Mengawal aspirasi dan memastikan jalannya organisasi
+          tetap sesuai dengan arah dan tujuan HMTP.
+        </p>
+
+      </div>
+
+      <div class="department-card__ornament">
+        <div class="department-card__shape shape-1"></div>
+        <div class="department-card__shape shape-2"></div>
+        <div class="department-card__shape shape-3"></div>
+      </div>
+
+      <span class="department-card__corner"></span>
+
+      <div class="department-card__logo-wrap">
+        <img class="department-card__logo" src="img/legislatif-logo.png" alt="Logo Legislatif" loading="lazy">
+      </div>
+
+    </article>
+
+
+    <!-- CARD 02 — KETUA ANGKATAN -->
+    <article class="department-card department-card--right">
+
+      <div class="department-card__glow"></div>
+
+      <div class="department-card__top">
+        <span class="department-card__number">02</span>
+        <span class="department-card__label">HMTP</span>
+      </div>
+
+      <div class="department-card__content">
+
+        <p class="department-card__category">
+          ORGANISASI
+        </p>
+
+        <h3 class="department-card__title">
+          Ketua Angkatan
+        </h3>
+
+        <p class="department-card__description">
+          Menjadi penghubung dan penggerak mahasiswa dalam
+          membangun solidaritas setiap angkatan.
+        </p>
+
+      </div>
+
+      <div class="department-card__ornament">
+        <div class="department-card__shape shape-1"></div>
+        <div class="department-card__shape shape-2"></div>
+        <div class="department-card__shape shape-3"></div>
+      </div>
+
+      <span class="department-card__corner"></span>
+
+      <div class="department-card__logo-wrap">
+        <img class="department-card__logo" src="img/logo-hmtp.png" alt="Logo Ketua Angkatan" loading="lazy">
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <!-- =====================================================
+       PAIR 2
+       ===================================================== -->
+
+  <div class="department-pair">
+
+    <!-- CARD 03 — SEKRETARIS -->
+    <article class="department-card department-card--left">
+
+      <div class="department-card__glow"></div>
+
+      <div class="department-card__top">
+        <span class="department-card__number">03</span>
+        <span class="department-card__label">HMTP</span>
+      </div>
+
+      <div class="department-card__content">
+
+        <p class="department-card__category">
+          ORGANISASI
+        </p>
+
+        <h3 class="department-card__title">
+          Sekretaris
+        </h3>
+
+        <p class="department-card__description">
+          Menjaga administrasi dan dokumentasi organisasi agar
+          setiap proses berjalan terstruktur dan terarah.
+        </p>
+
+      </div>
+
+      <div class="department-card__ornament">
+        <div class="department-card__shape shape-1"></div>
+        <div class="department-card__shape shape-2"></div>
+        <div class="department-card__shape shape-3"></div>
+      </div>
+
+      <span class="department-card__corner"></span>
+
+      <div class="department-card__logo-wrap">
+        <img class="department-card__logo" src="img/sekretaris-logo.png" alt="Logo Sekretaris" loading="lazy">
+      </div>
+
+    </article>
+
+
+    <!-- CARD 04 — BENDAHARA -->
+    <article class="department-card department-card--right">
+
+      <div class="department-card__glow"></div>
+
+      <div class="department-card__top">
+        <span class="department-card__number">04</span>
+        <span class="department-card__label">HMTP</span>
+      </div>
+
+      <div class="department-card__content">
+
+        <p class="department-card__category">
+          ORGANISASI
+        </p>
+
+        <h3 class="department-card__title">
+          Bendahara
+        </h3>
+
+        <p class="department-card__description">
+          Mengelola keuangan organisasi secara bertanggung jawab,
+          transparan, dan berkelanjutan.
+        </p>
+
+      </div>
+
+      <div class="department-card__ornament">
+        <div class="department-card__shape shape-1"></div>
+        <div class="department-card__shape shape-2"></div>
+        <div class="department-card__shape shape-3"></div>
+      </div>
+
+      <span class="department-card__corner"></span>
+
+      <div class="department-card__logo-wrap">
+        <img class="department-card__logo" src="img/bendahara-logo.png" alt="Logo Bendahara" loading="lazy">
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <!-- =====================================================
+       PAIR 3
+       ===================================================== -->
+
+  <div class="department-pair">
+
+    <!-- CARD 05 — MEDIA CENTER -->
+    <article class="department-card department-card--left">
+
+      <div class="department-card__glow"></div>
+
+      <div class="department-card__top">
+        <span class="department-card__number">05</span>
+        <span class="department-card__label">HMTP</span>
+      </div>
+
+      <div class="department-card__content">
+
+        <p class="department-card__category">
+          DEPARTEMEN
+        </p>
+
+        <h3 class="department-card__title">
+          Media Center
+        </h3>
+
+        <p class="department-card__description">
+          Menghadirkan informasi, visual, dan komunikasi HMTP
+          kepada seluruh mahasiswa dan masyarakat.
+        </p>
+
+      </div>
+
+      <div class="department-card__ornament">
+        <div class="department-card__shape shape-1"></div>
+        <div class="department-card__shape shape-2"></div>
+        <div class="department-card__shape shape-3"></div>
+      </div>
+
+      <span class="department-card__corner"></span>
+
+      <div class="department-card__logo-wrap">
+        <img class="department-card__logo" src="img/media-center-logo.png" alt="Logo Media Center" loading="lazy">
+      </div>
+
+    </article>
+
+
+    <!-- CARD 06 — KADERISASI -->
+    <article class="department-card department-card--right">
+
+      <div class="department-card__glow"></div>
+
+      <div class="department-card__top">
+        <span class="department-card__number">06</span>
+        <span class="department-card__label">HMTP</span>
+      </div>
+
+      <div class="department-card__content">
+
+        <p class="department-card__category">
+          DEPARTEMEN
+        </p>
+
+        <h3 class="department-card__title">
+          Kaderisasi
+        </h3>
+
+        <p class="department-card__description">
+          Membentuk dan mengembangkan karakter serta kapasitas
+          kader sebagai penerus HMTP.
+        </p>
+
+      </div>
+
+      <div class="department-card__ornament">
+        <div class="department-card__shape shape-1"></div>
+        <div class="department-card__shape shape-2"></div>
+        <div class="department-card__shape shape-3"></div>
+      </div>
+
+      <span class="department-card__corner"></span>
+
+      <div class="department-card__logo-wrap">
+        <img class="department-card__logo" src="img/kaderisasi-logo.png" alt="Logo Kaderisasi" loading="lazy">
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <!-- =====================================================
+       PAIR 4
+       ===================================================== -->
+
+  <div class="department-pair">
+
+    <!-- CARD 07 — INTERNAL -->
+    <article class="department-card department-card--left">
+
+      <div class="department-card__glow"></div>
+
+      <div class="department-card__top">
+        <span class="department-card__number">07</span>
+        <span class="department-card__label">HMTP</span>
+      </div>
+
+      <div class="department-card__content">
+
+        <p class="department-card__category">
+          DEPARTEMEN
+        </p>
+
+        <h3 class="department-card__title">
+          Internal
+        </h3>
+
+        <p class="department-card__description">
+          Membangun hubungan internal yang solid dan menciptakan
+          lingkungan HMTP yang hangat dan suportif.
+        </p>
+
+      </div>
+
+      <div class="department-card__ornament">
+        <div class="department-card__shape shape-1"></div>
+        <div class="department-card__shape shape-2"></div>
+        <div class="department-card__shape shape-3"></div>
+      </div>
+
+      <span class="department-card__corner"></span>
+
+      <div class="department-card__logo-wrap">
+        <img class="department-card__logo" src="img/internal-logo.png" alt="Logo Internal" loading="lazy">
+      </div>
+
+    </article>
+
+
+    <!-- CARD 08 — EKSTERNAL -->
+    <article class="department-card department-card--right">
+
+      <div class="department-card__glow"></div>
+
+      <div class="department-card__top">
+        <span class="department-card__number">08</span>
+        <span class="department-card__label">HMTP</span>
+      </div>
+
+      <div class="department-card__content">
+
+        <p class="department-card__category">
+          DEPARTEMEN
+        </p>
+
+        <h3 class="department-card__title">
+          Eksternal
+        </h3>
+
+        <p class="department-card__description">
+          Membangun relasi dan membuka ruang kolaborasi HMTP
+          dengan pihak di luar organisasi.
+        </p>
+
+      </div>
+
+      <div class="department-card__ornament">
+        <div class="department-card__shape shape-1"></div>
+        <div class="department-card__shape shape-2"></div>
+        <div class="department-card__shape shape-3"></div>
+      </div>
+
+      <span class="department-card__corner"></span>
+
+      <div class="department-card__logo-wrap">
+        <img class="department-card__logo" src="img/eksternal-logo.png" alt="Logo Eksternal" loading="lazy">
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <!-- =====================================================
+       BUFFER / TUMBAL
+       
+       BUKAN DEPARTEMEN
+       TIDAK ACTIVE
+       TIDAK MASUK COUNTER
+       HANYA MENJADI CARD BAYANGAN
+       ===================================================== -->
+
+  <div
+    class="department-pair department-pair--buffer"
+    aria-hidden="true">
+
+    <article
+      class="department-card department-card--left department-card--buffer">
+    </article>
+
+    <article
+      class="department-card department-card--right department-card--buffer">
+    </article>
+
+  </div>
+
+    </div><!-- /departments__carousel -->
+
+  </div><!-- /departments__sticky -->
+</section><!-- /departments -->
+
+
+<!-- =========================================================
+     HMTP — STRUKTUR ORGANISASI
+========================================================= -->
+
+<section class="organization" id="organization">
+
+  <div class="organization__sticky">
+
+    <!-- HEADER -->
+    <div class="organization__header">
+      <p class="organization__eyebrow">
+        HMTP ORGANISASI
+      </p>
+
+      <h2 class="organization__title">
+        ORANG-ORANG<br>
+        DI BALIK HMTP.
+      </h2>
+    </div>
+
+
+    <!-- =====================================================
+         ORGANIZATION CANVAS
+    ===================================================== -->
+
+    <div class="organization__viewport">
+
+      <div class="organization__canvas" id="organizationCanvas">
+
+        <svg
+          class="organization__connections"
+          id="organizationConnections"
+          aria-hidden="true"
+        ></svg>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             LEVEL 1 — KETUA HMTP
+        ════════════════════════════════════════════════════ -->
+        <div class="org-level org-level--chairman">
+
+          <article
+            class="org-card org-card--chairman"
+            data-person="chairman"
+          >
+            <div class="org-card__photo">
+              <img src="kabinet/ketua-hmtp.png" alt="Ketua HMTP">
+            </div>
+            <div class="org-card__info">
+              <span class="org-card__role">KETUA HMTP</span>
+              <h3>Debi Gideon Pandiangan</h3>
+              <span class="org-card__nim">224422027</span>
+            </div>
+          </article>
+
+        </div><!-- /org-level--chairman -->
+
+
+        <!-- ═══════════════════════════════════════════════════
+             LEVEL 2 — SEKRETARIS | WAKIL KETUA | BENDAHARA
+        ════════════════════════════════════════════════════ -->
+        <div class="org-level org-level--middle">
+
+          <!-- SEKRETARIS -->
+          <div class="org-stack org-stack--secretary" id="secretaryGroup">
+            <div class="org-stack__label">SEKRETARIS</div>
+
+            <article class="org-card org-card--person" data-person="secretary1">
+              <div class="org-card__photo">
+                <img src="kabinet/sekretaris-1.png" alt="Sekretaris I">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">SEKRETARIS I</span>
+                <h3>Mulyana</h3>
+                <span class="org-card__nim">224321038</span>
+              </div>
+            </article>
+
+            <article class="org-card org-card--person" data-person="secretary2">
+              <div class="org-card__photo">
+                <img src="kabinet/sekretaris-2.png" alt="Sekretaris II">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">SEKRETARIS II</span>
+                <h3>Faris Faturrahman</h3>
+                <span class="org-card__nim">224321003</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- WAKIL KETUA -->
+          <div class="org-row org-row--vice" id="viceGroup">
+
+            <article class="org-card org-card--vice" data-person="vice1">
+              <div class="org-card__photo">
+                <img src="kabinet/wakil-ketua-1.png" alt="Wakil Ketua I">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">WAKIL KETUA HMTP I</span>
+                <h3>Rafi Altarizky Athallah</h3>
+                <span class="org-card__nim">224321041</span>
+              </div>
+            </article>
+
+            <article class="org-card org-card--vice" data-person="vice2">
+              <div class="org-card__photo">
+                <img src="kabinet/wakil-ketua-2.png" alt="Wakil Ketua II">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">WAKIL KETUA HMTP II</span>
+                <h3>Muhammad Ajian Karim</h3>
+                <span class="org-card__nim">225422014</span>
+              </div>
+            </article>
+
+          </div><!-- /org-row--vice -->
+
+          <!-- BENDAHARA -->
+          <div class="org-stack org-stack--treasurer" id="treasurerGroup">
+            <div class="org-stack__label">KEUANGAN</div>
+
+            <article class="org-card org-card--person" data-person="treasurer1">
+              <div class="org-card__photo">
+                <img src="kabinet/bendahara-1.png" alt="Bendahara I">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">BENDAHARA I</span>
+                <h3>M. Dzikri A. W.</h3>
+                <span class="org-card__nim">224321034</span>
+              </div>
+            </article>
+
+            <article class="org-card org-card--person" data-person="treasurer2">
+              <div class="org-card__photo">
+                <img src="kabinet/bendahara-2.png" alt="Bendahara II">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">BENDAHARA II</span>
+                <h3>Serla Marviyah</h3>
+                <span class="org-card__nim">224421046</span>
+              </div>
+            </article>
+          </div>
+
+        </div><!-- /org-level--middle -->
+
+
+        <!-- ═══════════════════════════════════════════════════
+             LEVEL 3 — KETUA ANGKATAN
+        ════════════════════════════════════════════════════ -->
+        <div class="org-level org-level--generation">
+
+          <div class="org-row org-row--generation" id="generationGroup">
+
+            <article class="org-card org-card--generation" data-person="generation24">
+              <div class="org-card__photo">
+                <img src="kabinet/ketua-angkatan-24.png" alt="Ketua Angkatan 2024">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">KETUA ANGKATAN</span>
+                <h3>2024</h3>
+                <span class="org-card__sub">Nama Ketua Angkatan</span>
+              </div>
+            </article>
+
+            <article class="org-card org-card--generation" data-person="generation25">
+              <div class="org-card__photo">
+                <img src="kabinet/ketua-angkatan-25.png" alt="Ketua Angkatan 2025">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">KETUA ANGKATAN</span>
+                <h3>2025</h3>
+                <span class="org-card__sub">Nama Ketua Angkatan</span>
+              </div>
+            </article>
+
+          </div>
+        </div><!-- /org-level--generation -->
+
+
+        <!-- ═══════════════════════════════════════════════════
+             LEVEL 4 — DEPARTEMEN
+        ════════════════════════════════════════════════════ -->
+        <div class="org-level org-level--departments">
+
+          <div class="departments-grid" id="departmentsGrid">
+
+            <!-- KADERISASI -->
+            <div class="department-column">
+              <article class="org-card org-card--department" data-person="kaderisasi">
+                <div class="org-card__photo">
+                  <img src="kabinet/kadep-kaderisasi.png" alt="Kadep Kaderisasi">
+                </div>
+                <div class="org-card__info">
+                  <span class="org-card__role">DEPT. KADERISASI</span>
+                  <h3>Amr Nasrullah Robbani</h3>
+                  <span class="org-card__nim">224421027</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- INTERNAL -->
+            <div class="department-column">
+              <article class="org-card org-card--department" data-person="internal">
+                <div class="org-card__photo">
+                  <img src="kabinet/kadep-internal.png" alt="Kadep Internal">
+                </div>
+                <div class="org-card__info">
+                  <span class="org-card__role">DEPT. INTERNAL</span>
+                  <h3>M. Difaush Sidqi</h3>
+                  <span class="org-card__nim">224321011</span>
+                </div>
+              </article>
+              <div class="department-divisions">
+                <article class="org-card org-card--division" data-person="academic">
+                  <div class="org-card__photo org-card__photo--initials">TO</div>
+                  <div class="org-card__info">
+                    <span class="org-card__role">DIV. AKADEMIK</span>
+                    <h3>Trya Oktaviani</h3>
+                  </div>
+                </article>
+                <article class="org-card org-card--division" data-person="family">
+                  <div class="org-card__photo org-card__photo--initials">ZS</div>
+                  <div class="org-card__info">
+                    <span class="org-card__role">DIV. KEKELUARGAAN</span>
+                    <h3>Zalfaa Safaa</h3>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- EKSTERNAL -->
+            <div class="department-column">
+              <article class="org-card org-card--department" data-person="external">
+                <div class="org-card__photo">
+                  <img src="kabinet/kadep-eksternal.png" alt="Kadep Eksternal">
+                </div>
+                <div class="org-card__info">
+                  <span class="org-card__role">DEPT. EKSTERNAL</span>
+                  <h3>Moch. Rahman Nawawei</h3>
+                  <span class="org-card__nim">224422009</span>
+                </div>
+              </article>
+              <div class="department-divisions">
+                <article class="org-card org-card--division" data-person="foreignRelations">
+                  <div class="org-card__photo org-card__photo--initials">DF</div>
+                  <div class="org-card__info">
+                    <span class="org-card__role">DIV. HUBUNGAN LUAR</span>
+                    <h3>Devan Firmansyah</h3>
+                  </div>
+                </article>
+                <article class="org-card org-card--division" data-person="internalRelations">
+                  <div class="org-card__photo org-card__photo--initials">FH</div>
+                  <div class="org-card__info">
+                    <span class="org-card__role">DIV. HUBUNGAN DALAM</span>
+                    <h3>Femi Hidayat</h3>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- MEDIA CENTER -->
+            <div class="department-column">
+              <article class="org-card org-card--department" data-person="mediaCenter">
+                <div class="org-card__photo">
+                  <img src="kabinet/kadep-medcen.png" alt="Kadep Media Center">
+                </div>
+                <div class="org-card__info">
+                  <span class="org-card__role">DEPT. MEDIA CENTER</span>
+                  <h3>Agung Darmawan</h3>
+                  <span class="org-card__nim">224421026</span>
+                </div>
+              </article>
+              <div class="department-divisions">
+                <article class="org-card org-card--division" data-person="design">
+                  <div class="org-card__photo org-card__photo--initials">MF</div>
+                  <div class="org-card__info">
+                    <span class="org-card__role">DIV. DESIGN</span>
+                    <h3>M. Faiz Firdaus</h3>
+                  </div>
+                </article>
+                <article class="org-card org-card--division" data-person="media">
+                  <div class="org-card__photo org-card__photo--initials">RY</div>
+                  <div class="org-card__info">
+                    <span class="org-card__role">DIV. MEDIA</span>
+                    <h3>Raised Yasykur H.</h3>
+                  </div>
+                </article>
+                <article class="org-card org-card--division" data-person="entrepreneurship">
+                  <div class="org-card__photo org-card__photo--initials">FA</div>
+                  <div class="org-card__info">
+                    <span class="org-card__role">DIV. KEWIRAUSAHAAN</span>
+                    <h3>Faqih Ar Rosyid</h3>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+          </div><!-- /departments-grid -->
+        </div><!-- /org-level--departments -->
+
+
+        <!-- ═══════════════════════════════════════════════════
+             LEVEL 5 — BADAN LEGISLATIF (terpisah di bawah)
+        ════════════════════════════════════════════════════ -->
+        <div class="org-level org-level--legislative-bottom">
+
+          <div
+            class="org-group org-group--legislative"
+            id="legislativeGroup"
+          >
+            <div class="org-group__label">LEGISLATIF</div>
+
+            <article
+              class="org-card org-card--legislative-main"
+              data-person="legislative"
+            >
+              <div class="org-card__photo">
+                <img src="kabinet/badan-legislatif.png" alt="Badan Legislatif">
+              </div>
+              <div class="org-card__info">
+                <span class="org-card__role">BADAN LEGISLATIF</span>
+                <h3>M. Satria Tri Lesmana</h3>
+                <span class="org-card__nim">224421018</span>
+              </div>
+            </article>
+
+            <div class="org-row org-row--legislative-vice">
+              <article class="org-card org-card--small" data-person="legislativeVice1">
+                <div class="org-card__info">
+                  <span class="org-card__role">WAKIL LEGISLATIF I</span>
+                  <h3>Nama Wakil I</h3>
+                  <span class="org-card__nim">000000000</span>
+                </div>
+              </article>
+              <article class="org-card org-card--small" data-person="legislativeVice2">
+                <div class="org-card__info">
+                  <span class="org-card__role">WAKIL LEGISLATIF II</span>
+                  <h3>Nama Wakil II</h3>
+                  <span class="org-card__nim">000000000</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="org-row org-row--commissions">
+              <article class="org-card org-card--commission" data-person="commission1">
+                <div class="org-card__info">
+                  <span class="org-card__role">KETUA KOMISI I</span>
+                  <h3>Nama Ketua Komisi</h3>
+                </div>
+              </article>
+              <article class="org-card org-card--commission" data-person="commission2">
+                <div class="org-card__info">
+                  <span class="org-card__role">KETUA KOMISI II</span>
+                  <h3>Nama Ketua Komisi</h3>
+                </div>
+              </article>
+              <article class="org-card org-card--commission" data-person="commission3">
+                <div class="org-card__info">
+                  <span class="org-card__role">KETUA KOMISI III</span>
+                  <h3>Nama Ketua Komisi</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </div><!-- /org-level--legislative-bottom -->
+
+      </div><!-- /organization__canvas -->
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       PROFILE POPUP
+  ======================================================== -->
+
+  <div
+    class="person-modal"
+    id="personModal"
+    aria-hidden="true"
+  >
+
+    <div
+      class="person-modal__backdrop"
+      data-close-modal
+    ></div>
+
+    <div
+      class="person-modal__box"
+      role="dialog"
+      aria-modal="true"
+    >
+
+      <button
+        class="person-modal__close"
+        type="button"
+        data-close-modal
+      >
+        ×
+      </button>
+
+      <div class="person-modal__photo">
+        <img
+          id="personModalPhoto"
+          src=""
+          alt=""
+        >
+      </div>
+
+      <div class="person-modal__content">
+
+        <span
+          class="person-modal__role"
+          id="personModalRole"
+        ></span>
+
+        <h3
+          id="personModalName"
+        ></h3>
+
+        <div class="person-modal__meta">
+
+          <div>
+            <span>NIM</span>
+            <strong id="personModalNim">
+              -
+            </strong>
+          </div>
+
+          <div>
+            <span>INSTAGRAM</span>
+            <a
+              id="personModalInstagram"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @username
+            </a>
+          </div>
+
+        </div>
+
+        <p
+          id="personModalDescription"
+        ></p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D4] HIMPUNAN — Struktur Organisasi & Kabinet
+         ───────────────────────────────────────────────────────── -->
+    <!-- <section class="tentang-himpunan-org">
+      <div class="tentang-himpunan-org__inner">
+
+        <header class="tentang-himpunan-org__header" data-hmpn-reveal>
+          <span class="tentang-himpunan-org__chip">Struktur Organisasi</span>
+          <h2 class="tentang-himpunan-org__title">
+            Kabinet <em>Aeternum Gloria</em>
+          </h2>
+        </header>
+
+        <figure class="tentang-himpunan-org__img-wrap" data-hmpn-reveal data-hmpn-delay="1">
+          <img
+            src="img/struktur.png"
+            alt="Struktur Organisasi HMTP — Kabinet Aeternum Gloria"
+            class="tentang-himpunan-org__img"
+            loading="lazy"
+          >
+        </figure>
+
+      </div>
+    </section> -->
+    <!-- / [D4] HIMPUNAN -->
+
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D4.1] GALERI — Foto Kegiatan & Keseruan Himpunan
+         ─────────────────────────────────────────────────────────
+         Dua baris marquee: baris 1 kanan→kiri, baris 2 kiri→kanan.
+         Klik foto → lightbox full image.
+         Tombol "Tambah Foto" → modal dev untuk menambah / hapus foto.
+         Data tersimpan di localStorage key "hmtp_galeri".
+         ─────────────────────────────────────────────────────── -->
+    <section class="galeri-kegiatan" id="galeri">
+      <div class="galeri-kegiatan__inner">
+
+        <header class="galeri-kegiatan__header" data-hmpn-reveal id="galeriHeader">
+          <span class="galeri-kegiatan__chip">Momen Bersama</span>
+          <h2 class="galeri-kegiatan__title">GALERI <em>KEGIATAN</em> <span class="section-count" id="galeriCount"></span></h2>
+        </header>
+
+      </div>
+
+      <!-- Baris 1 — kanan ke kiri (RTL) -->
+      <div class="galeri-marquee galeri-marquee--rtl" id="galeriRow1" aria-hidden="true">
+        <div class="galeri-marquee__track" id="galeriTrack1"></div>
+      </div>
+
+      <!-- Baris 2 — kiri ke kanan (LTR) -->
+      <div class="galeri-marquee galeri-marquee--ltr" id="galeriRow2" aria-hidden="true">
+        <div class="galeri-marquee__track" id="galeriTrack2"></div>
+      </div>
+
+      <!-- Pesan kosong (tampil saat belum ada foto) -->
+      <div class="galeri-empty" id="galeriEmpty" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+          <rect x="2" y="5" width="24" height="18" rx="2.5"/>
+          <circle cx="9.5" cy="11" r="2.5"/>
+          <path d="M2 18.5l7-6.5 5 5 3.5-3.5 10.5 9.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Belum ada foto — tambahkan momen keseruan himpunan</span>
+      </div>
+
+      <div class="galeri-kegiatan__inner">
+        <!-- Tombol tambah (developer mode) -->
+        <div class="galeri-kegiatan__actions">
+          <button class="galeri-kegiatan__add-btn dev-btn" id="galeriAddBtn" type="button">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                 stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                 aria-hidden="true">
+              <line x1="6" y1="1" x2="6" y2="11"/>
+              <line x1="1" y1="6" x2="11" y2="6"/>
+            </svg>
+            Tambah Foto
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- / [D4.1] GALERI -->
+
+
+    <!-- LIGHTBOX GALERI -->
+    <div class="galeri-lightbox" id="galeriLightbox"
+         aria-modal="true" role="dialog"
+         aria-label="Foto kegiatan HMTP" aria-hidden="true">
+
+      <div class="galeri-lightbox__backdrop" id="galeriLightboxBackdrop"></div>
+
+      <button class="galeri-lightbox__close" id="galeriLightboxClose"
+              type="button" aria-label="Tutup lightbox">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             aria-hidden="true">
+          <line x1="2" y1="2" x2="13" y2="13"/>
+          <line x1="13" y1="2" x2="2" y2="13"/>
+        </svg>
+      </button>
+
+      <figure class="galeri-lightbox__figure">
+        <img class="galeri-lightbox__img" id="galeriLightboxImg" src="" alt="">
+        <figcaption class="galeri-lightbox__caption" id="galeriLightboxCaption"></figcaption>
+      </figure>
+
+    </div>
+    <!-- / LIGHTBOX GALERI -->
+
+
+    <!-- MODAL TAMBAH FOTO GALERI -->
+    <div class="galeri-modal" id="galeriModal"
+         aria-modal="true" role="dialog"
+         aria-label="Tambah foto galeri" aria-hidden="true">
+
+      <div class="galeri-modal__backdrop" id="galeriModalBackdrop"></div>
+
+      <div class="galeri-modal__card">
+
+        <button class="galeri-modal__close" id="galeriModalClose"
+                type="button" aria-label="Tutup">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               aria-hidden="true">
+            <line x1="2" y1="2" x2="11" y2="11"/>
+            <line x1="11" y1="2" x2="2" y2="11"/>
+          </svg>
+        </button>
+
+        <h3 class="galeri-modal__title">Tambah Foto</h3>
+
+        <form class="galeri-modal__form" id="galeriForm" novalidate>
+
+          <!-- Upload dari perangkat -->
+          <div class="galeri-modal__upload-wrap">
+            <label class="galeri-modal__upload-area" id="galeriUploadArea"
+                   aria-label="Klik untuk pilih gambar dari perangkat">
+              <input type="file" id="galeriInputFile" accept="image/*">
+              <div class="galeri-modal__upload-ph" id="galeriUploadPh">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                     stroke="var(--color-gold)" stroke-width="1.3" aria-hidden="true">
+                  <rect x="2" y="6" width="26" height="18" rx="3"/>
+                  <circle cx="10" cy="12.5" r="2.8"/>
+                  <path d="M2 20l8-7 5.5 5.5 3.5-3.5 11 10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 2v7M18.5 4.5l2.5-2.5 2.5 2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="galeri-modal__upload-label">Pilih dari perangkat</span>
+                <span class="galeri-modal__upload-sub">JPG, PNG, WEBP, dll.</span>
+              </div>
+              <img class="galeri-modal__preview" id="galeriPreviewImg" src="" alt="Preview">
+            </label>
+          </div>
+
+          <div class="galeri-modal__sep"><span>atau</span></div>
+
+          <label class="galeri-modal__field">
+            <span class="galeri-modal__field-label">URL Gambar</span>
+            <input type="url" id="galeriInputUrl"
+                   class="galeri-modal__input"
+                   placeholder="https://…">
+          </label>
+
+          <label class="galeri-modal__field">
+            <span class="galeri-modal__field-label">
+              Keterangan
+              <span class="galeri-modal__optional">(opsional)</span>
+            </span>
+            <input type="text" id="galeriInputCaption"
+                   class="galeri-modal__input"
+                   placeholder="Nama kegiatan, tanggal, dll."
+                   maxlength="120">
+          </label>
+
+          <div class="galeri-modal__footer">
+            <button class="galeri-modal__cancel" id="galeriCancelBtn"
+                    type="button">Batal</button>
+            <button class="galeri-modal__save" type="submit">Simpan Foto</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <!-- / MODAL TAMBAH FOTO GALERI -->
+
+
+    <!-- ─────────────────────────────────────────────────────────
+         [D4] KONTAK — Informasi kontak & media sosial
+         ─────────────────────────────────────────────────────────
+         STATUS: PLACEHOLDER — Akan diisi di tahap berikutnya
+         ───────────────────────────────────────────────────────── -->
+    <section class="kontak" id="kontak">
+      <div class="kontak__bg-grid" aria-hidden="true"></div>
+      <div class="kontak__bg-glow" aria-hidden="true"></div>
+      <div class="kontak__inner">
+        <div class="kontak__left" id="kontakLeft">
+          <div class="kontak__kop">
+            <span class="kontak__dot" aria-hidden="true"></span>
+            <span class="kontak__chip" data-i18n="kontak.chip">Hubungi Kami</span>
+          </div>
+          <h2 class="kontak__headline">
+            <span class="kontak__headline-plain" data-i18n="kontak.h1">Mari</span>
+            <span class="kontak__headline-plain" data-i18n="kontak.h2">terhubung</span>
+            <em class="kontak__headline-em" data-i18n="kontak.h3">bersama kami.</em>
+          </h2>
+          <div class="kontak__rule" aria-hidden="true"></div>
+          <p class="kontak__tagline" data-i18n="kontak.tagline">
+            Punya pertanyaan, ingin berkolaborasi, atau sekadar ingin kenal lebih jauh? Kami selalu terbuka untuk kamu.
+          </p>
+        </div>
+        <div class="kontak__right" id="kontakRight">
+          <div class="kontak-card kontak-card--hello">
+            <p class="kontak-card__label">SAPA KAMI</p>
+            <a href="mailto:hmtpewedan@gmail.com" class="kontak-card__email" aria-label="Kirim email ke HMTP">hmtpewedan@gmail.com</a>
+            <div class="kontak-card__divider" aria-hidden="true"></div>
+            <div class="kontak-card__socials">
+              <a href="https://instagram.com/hmtp.ewedan" target="_blank" rel="noopener noreferrer" class="kontak-card__social-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>INSTAGRAM</a>
+              <a href="https://linkedin.com/company/hmtp-ewedan" target="_blank" rel="noopener noreferrer" class="kontak-card__social-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LINKEDIN</a>
+              <a href="https://linktr.ee/hmtpewedan" target="_blank" rel="noopener noreferrer" class="kontak-card__social-link kontak-card__social-link--tree"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V12M12 12l-5-5M12 12l5-5M9 20h6"/><path d="M6 8l-2-2M18 8l2-2"/></svg>LINKTREE</a>
+            </div>
+          </div>
+          <div class="kontak-card kontak-card--location">
+            <p class="kontak-card__label">LOKASI KAMI</p>
+            <div class="kontak-card__location-row">
+              <div class="kontak-card__location-item">
+                <div class="kontak-card__loc-head"><span class="kontak-card__loc-dot" aria-hidden="true"></span><span class="kontak-card__loc-region">BANDUNG</span></div>
+                <h3 class="kontak-card__loc-name">Politeknik Manufaktur Bandung</h3>
+                <p class="kontak-card__loc-addr">Jl. Kanayakan No. 21, Dago<br>Coblong, Bandung 40135<br>Jawa Barat, Indonesia</p>
+                <a href="https://maps.google.com/?q=Politeknik+Manufaktur+Bandung" target="_blank" rel="noopener noreferrer" class="kontak-card__map-link" aria-label="Buka di Google Maps">Lihat di Maps<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="kontak__footer" role="contentinfo">
+        <!-- 5-click hidden dev mode trigger -->
+        <span class="kontak__footer-copy" id="devTrigger" style="cursor:default; user-select:none;">
+          &copy; 2025 HMTP — Kabinet Aeternum Gloria
+        </span>
+        <span class="kontak__footer-brand" data-i18n="footer.brand">POLITEKNIK MANUFAKTUR BANDUNG</span>
+      </footer>
+    </section>
+    <!-- / [D4] KONTAK -->
+
+  </main>
+  <!-- / [D] MAIN -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       [E] SKRIP — JavaScript eksternal
+       ═══════════════════════════════════════════════════════════════
+       CATATAN:
+       ▸ Selalu letakkan <script> di sini (sebelum </body>), bukan di <head>
+       ▸ Jika menambah library eksternal (mis. GSAP, Swiper),
+         tambahkan SEBELUM script.js agar bisa diakses di dalamnya
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       EXPLORE STUDIO OVERLAY — fullscreen virtual tour
+       Dikendalikan oleh openExplore() / closeExplore() di script.js
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="explore-overlay" role="dialog" aria-modal="true" aria-label="Explore Studio">
+
+    <div id="es-photo"></div>
+
+    <div class="es-grad es-grad-top"></div>
+    <div class="es-grad es-grad-bottom"></div>
+    <div class="es-grad es-grad-lr"></div>
+    <div class="es-grad es-grad-lr right"></div>
+
+    <div id="es-fade"></div>
+
+    <!-- Badge loop (top-left) -->
+    <div id="es-badge">
+      <span class="es-dot"></span>
+      <span id="es-badge-label">EXPLORE STUDIO</span>
+    </div>
+
+    <!-- Home pill (top-center, tampil di dalam loop) -->
+    <div class="es-hp-pos" id="es-home" style="display:none" title="Kembali ke Lobby">
+      <div class="es-home-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+        Kembali ke Lobby
+      </div>
+    </div>
+
+    <!-- Exit (top-right) -->
+    <button id="es-exit" title="Keluar (Esc)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- Entry hotspots (Lobby) -->
+    <div class="es-hp-pos es-fu" id="es-hs-studio" title="Loop Studio">
+      <div class="es-hp-anim">
+        <div class="es-ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </div>
+        <span class="es-label">Loop Studio</span>
+      </div>
+    </div>
+
+    <div class="es-hp-pos es-fr" id="es-hs-koridor" title="Loop Koridor">
+      <div class="es-hp-anim">
+        <div class="es-ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <span class="es-label">Loop Koridor</span>
+      </div>
+    </div>
+
+    <div id="es-cta">Mulai Jelajahi Studio</div>
+
+    <!-- Nav hotspots (di dalam loop) -->
+    <div class="es-hp-pos es-fl" id="es-hs-prev" style="display:none" title="Sebelumnya">
+      <div class="es-hp-anim">
+        <div class="es-ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="es-hp-pos es-fr" id="es-hs-next" style="display:none" title="Berikutnya">
+      <div class="es-hp-anim">
+        <div class="es-ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room info -->
+    <div id="es-room-info">
+      <h2 id="es-room-name">Lobby</h2>
+      <p id="es-room-desc"></p>
+    </div>
+
+    <!-- Progress dots -->
+    <div id="es-progress"></div>
+
+    <!-- Keyboard hint -->
+    <div id="es-kb-hint">← → Navigasi &nbsp;&nbsp; ESC Keluar</div>
+
+  </div><!-- /explore-overlay -->
+
+  <script src="script.js"></script>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       DEV MODE — LOGIN MODAL
+       Terpicu dengan 5 klik pada teks copyright di footer.
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="devLoginModal" class="dev-modal" aria-hidden="true" role="dialog"
+       aria-modal="true" aria-labelledby="devLoginHeading">
+    <div class="dev-modal__backdrop" id="devModalBackdrop"></div>
+    <div class="dev-modal__card">
+
+      <div class="dev-modal__header">
+        <div class="dev-modal__icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/>
+          </svg>
+        </div>
+        <div class="dev-modal__title-group">
+          <span class="dev-modal__label" id="devLoginHeading">MODE PENGEMBANG</span>
+          <p class="dev-modal__sub">Masukkan kredensial untuk mengaktifkan akses pengeditan</p>
+        </div>
+        <button class="dev-modal__close" id="devModalClose" type="button" aria-label="Tutup">&times;</button>
+      </div>
+
+      <form class="dev-modal__form" id="devLoginForm" novalidate>
+        <label class="dev-modal__field-label" for="devUsername">NAMA PENGGUNA</label>
+        <input class="dev-modal__input" type="text" id="devUsername"
+               autocomplete="off" autocorrect="off" spellcheck="false"
+               placeholder="username">
+
+        <label class="dev-modal__field-label" for="devPassword">KATA SANDI</label>
+        <input class="dev-modal__input" type="password" id="devPassword"
+               autocomplete="current-password" placeholder="••••••••">
+
+        <p class="dev-modal__error" id="devLoginError" aria-live="polite"></p>
+
+        <div class="dev-modal__actions">
+          <button class="dev-modal__submit" type="submit">MASUK</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <!-- / DEV LOGIN MODAL -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       DEV MODE — BADGE (muncul saat dev mode aktif)
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="devBadge" class="dev-badge" aria-hidden="true">
+    <span class="dev-badge__dot" aria-hidden="true"></span>
+    <span class="dev-badge__label">MODE DEV</span>
+    <button id="devGithubBtn" class="dev-badge__action" type="button" aria-label="Pengaturan GitHub">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      GitHub
+    </button>
+    <button id="devLogoutBtn" class="dev-badge__action dev-badge__action--exit" type="button">
+      Keluar
+    </button>
+  </div>
+  <!-- / DEV BADGE -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       DEV MODE — GITHUB SETTINGS MODAL
+       Desain mengikuti referensi gambar (dark, gold accent)
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="devGithubModal" class="dev-modal dev-modal--github" aria-hidden="true"
+       role="dialog" aria-modal="true" aria-labelledby="devGhHeading">
+    <div class="dev-modal__backdrop" id="devGhBackdrop"></div>
+    <div class="dev-modal__card dev-modal__card--wide">
+
+      <div class="dev-modal__header">
+        <div class="dev-modal__icon-wrap" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </div>
+        <div class="dev-modal__title-group">
+          <span class="dev-modal__label" id="devGhHeading">PENGATURAN GITHUB</span>
+          <p class="dev-modal__sub">Hubungkan ke GitHub agar foto yang diupload langsung tersimpan di repository</p>
+        </div>
+        <button class="dev-modal__close" id="devGhClose" type="button" aria-label="Tutup">&times;</button>
+      </div>
+
+      <div class="dev-modal__gh-howto">
+        <span class="dev-modal__gh-howto-lbl">Cara buat token:</span>
+        GitHub → Settings → Developer Settings → Personal Access Tokens → Generate → centang "repo" → copy.
+      </div>
+
+      <div class="dev-modal__gh-form">
+        <label class="dev-modal__field-label" for="ghToken">TOKEN AKSES PRIBADI</label>
+        <input class="dev-modal__input" type="password" id="ghToken"
+               placeholder="ghp_••••••••••••••••••••••••••••••••••••••">
+
+        <label class="dev-modal__field-label" for="ghOwner">NAMA PENGGUNA GITHUB (PEMILIK)</label>
+        <input class="dev-modal__input" type="text" id="ghOwner"
+               placeholder="faizfirdaus505">
+
+        <label class="dev-modal__field-label" for="ghRepo">NAMA REPOSITORY</label>
+        <input class="dev-modal__input" type="text" id="ghRepo"
+               placeholder="porto2">
+
+        <label class="dev-modal__field-label" for="ghBranch">BRANCH</label>
+        <input class="dev-modal__input" type="text" id="ghBranch"
+               placeholder="main">
+
+        <label class="dev-modal__field-label" for="ghPagesUrl">GITHUB PAGES URL <span class="dev-modal__field-opt">(OPSIONAL)</span></label>
+        <input class="dev-modal__input" type="url" id="ghPagesUrl"
+               placeholder="https://faizfirdaus505.github.io/porto2/">
+        <p class="dev-modal__gh-hint">Isi ini agar URL gambar pakai domain GitHub Pages. Kosongkan jika belum punya.</p>
+
+        <p class="dev-gh-status" id="devGhTestStatus"></p>
+      </div>
+
+      <div class="dev-modal__footer">
+        <button class="dev-modal__btn dev-modal__btn--test"   id="devGhTest"   type="button">TEST KONEKSI</button>
+        <button class="dev-modal__btn dev-modal__btn--save"   id="devGhSave"   type="button">SIMPAN</button>
+        <button class="dev-modal__btn dev-modal__btn--cancel" id="devGhCancel" type="button">BATAL</button>
+      </div>
+
+    </div>
+  </div>
+  <!-- / GITHUB SETTINGS MODAL -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       DEV MODE — TAMBAH / EDIT PROYEK MODAL
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="devProyekModal" class="dev-modal" aria-hidden="true"
+       role="dialog" aria-modal="true" aria-labelledby="devProyekHeading">
+    <div class="dev-modal__backdrop" id="devProyekBackdrop"></div>
+    <div class="dev-modal__card">
+
+      <div class="dev-modal__header">
+        <div class="dev-modal__title-group">
+          <span class="dev-modal__label" id="devProyekHeading">TAMBAH PROYEK</span>
+          <p class="dev-modal__sub">Data proyek baru akan ditampilkan di section Proyek</p>
+        </div>
+        <button class="dev-modal__close" id="devProyekClose" type="button" aria-label="Tutup">&times;</button>
+      </div>
+
+      <form class="dev-modal__form" id="devProyekForm" novalidate>
+
+        <label class="dev-modal__field-label" for="dpTitle">JUDUL PROYEK <span class="dev-modal__field-req">*</span></label>
+        <input class="dev-modal__input" type="text" id="dpTitle"
+               placeholder="Mis. Desain Fixture CNC 5-Axis" required>
+
+        <label class="dev-modal__field-label" for="dpAuthor">PEMBUAT</label>
+        <input class="dev-modal__input" type="text" id="dpAuthor"
+               placeholder="Nama Mahasiswa · DEA 2024">
+
+        <label class="dev-modal__field-label" for="dpDesc">DESKRIPSI</label>
+        <textarea class="dev-modal__input dev-modal__textarea" id="dpDesc" rows="3"
+                  placeholder="Deskripsi singkat tentang proyek ini…"></textarea>
+
+        <div class="dev-modal__row2">
+          <div>
+            <label class="dev-modal__field-label" for="dpProdi">PRODI</label>
+            <select class="dev-modal__input dev-modal__select" id="dpProdi">
+              <option value="DEA">DEA</option>
+              <option value="DEB">DEB</option>
+              <option value="DEC">DEC</option>
+            </select>
+          </div>
+          <div>
+            <label class="dev-modal__field-label" for="dpColor">WARNA LATAR</label>
+            <input class="dev-modal__input dev-modal__color-picker" type="color"
+                   id="dpColor" value="#0a0a1a">
+          </div>
+        </div>
+
+        <label class="dev-modal__field-label">GAMBAR <span class="dev-modal__field-opt">(upload file atau URL)</span></label>
+        <div class="dev-modal__upload-area" id="dpUploadArea">
+          <input type="file" id="dpImageFile" accept="image/*" class="dev-modal__file-input">
+          <div class="dev-modal__upload-inner" id="dpUploadInner">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>Klik atau drop foto di sini</span>
+          </div>
+          <img id="dpPreviewImg" class="dev-modal__preview" style="display:none" alt="Preview">
+        </div>
+        <input class="dev-modal__input" type="url" id="dpImageUrl"
+               placeholder="Atau masukkan URL gambar…">
+
+        <div class="dev-modal__actions">
+          <button class="dev-modal__btn dev-modal__btn--cancel" id="devProyekCancel" type="button">Batal</button>
+          <button class="dev-modal__btn dev-modal__btn--save"   type="submit">Simpan</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <!-- / PROYEK MODAL -->
+
+
+  <script src="devmode.js"></script>
+
+</body>
+</html>
